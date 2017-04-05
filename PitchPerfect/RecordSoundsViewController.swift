@@ -62,6 +62,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     func enableRecordingButtons(recording: Bool) {
         //Method to control the recordingLabel, stopRecordingButton, recordButton
+        let green = UIColor.green
+        let red = UIColor.red
+        recordingLabel.textColor = recording ? red : green
         recordingLabel.text = recording ? "Recording in progress" : "Tap to Record"
         stopRecordingButton.isEnabled = recording
         recordButton.isEnabled = !recording
