@@ -30,6 +30,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSoundForButton(_ sender: UIButton) {
+        //Select the sound to play based on the button clicked
         switch(ButtonType(rawValue: sender.tag)!) {
             case .slow:
                 playSound(rate: 0.5)
@@ -49,6 +50,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func stopButtonPressed(_ sender: AnyObject) {
+        //Stop Audio if stopButton id Pressed
         stopAudio()
     }
     
