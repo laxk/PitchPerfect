@@ -19,11 +19,11 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var reverbButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
-    var recordedAudioURL: URL!
-    var audioFile:AVAudioFile!
-    var audioEngine:AVAudioEngine!
-    var audioPlayerNode: AVAudioPlayerNode!
-    var stopTimer: Timer!
+    @objc var recordedAudioURL: URL!
+    @objc var audioFile:AVAudioFile!
+    @objc var audioEngine:AVAudioEngine!
+    @objc var audioPlayerNode: AVAudioPlayerNode!
+    @objc var stopTimer: Timer!
     
     
     enum ButtonType: Int {

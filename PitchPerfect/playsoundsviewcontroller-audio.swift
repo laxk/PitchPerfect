@@ -33,7 +33,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
     
     // MARK: Audio Functions
     
-    func setupAudio() {
+    @objc func setupAudio() {
         // initialize (recording) audio file
         do {
             audioFile = try AVAudioFile(forReading: recordedAudioURL as URL)
@@ -114,7 +114,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         audioPlayerNode.play()
     }
     
-    func stopAudio() {
+    @objc func stopAudio() {
         
         if let audioPlayerNode = audioPlayerNode {
             audioPlayerNode.stop()
@@ -153,7 +153,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         }
     }
     
-    func setPlayButtonsEnabled(_ enabled: Bool) {
+    @objc func setPlayButtonsEnabled(_ enabled: Bool) {
         snailButton.isEnabled = enabled
         chipmunkButton.isEnabled = enabled
         rabbitButton.isEnabled = enabled
@@ -162,7 +162,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         reverbButton.isEnabled = enabled
     }
 
-    func showAlert(_ title: String, message: String) {
+    @objc func showAlert(_ title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

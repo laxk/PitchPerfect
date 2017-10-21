@@ -13,7 +13,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     //Class RecordSoundsViewController inherits from UIViewController and conforms to AVAudioRecorderDelegate protocol
     
-    var audioRecorder: AVAudioRecorder!
+    @objc var audioRecorder: AVAudioRecorder!
 
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
@@ -60,7 +60,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     
-    func enableRecordingButtons(recording: Bool) {
+    @objc func enableRecordingButtons(recording: Bool) {
         //Method to control the recordingLabel, stopRecordingButton, recordButton
         let green = UIColor.green
         let red = UIColor.red
