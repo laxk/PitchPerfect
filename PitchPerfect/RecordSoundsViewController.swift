@@ -85,7 +85,10 @@ extension RecordSoundsViewController: AVAudioRecorderDelegate {
             //When stopRecording button is pressed and if audio is recorded successfully, perform segue to PlaySoundsViewController
             performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
         } else {
-            print("Recording was not successful")
+            //print("Recording was not successful")
+            let alert = UIAlertController(title: "Alert", message: "Recording Failed", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .`default`, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
