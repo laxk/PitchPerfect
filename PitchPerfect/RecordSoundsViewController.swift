@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
+class RecordSoundsViewController: UIViewController {
     
     //Class RecordSoundsViewController inherits from UIViewController and conforms to AVAudioRecorderDelegate protocol
     
@@ -59,7 +59,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         try! audioSession.setActive(false)
     }
 
-    
     @objc func enableRecordingButtons(recording: Bool) {
         //Method to control the recordingLabel, stopRecordingButton, recordButton
         let green = UIColor.green
@@ -70,20 +69,23 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordButton.isEnabled = !recording
     }
 
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool){
-        if flag {
-            //When stopRecording button is pressed and if audio is recorded successfully, perform segue to PlaySoundsViewController
-            performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
-        } else {
-            print("Recording was not successful")
-        }
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "stopRecording" {
             let playSoundsVC = segue.destination as! PlaySoundsViewController
             let recordedAudioURL = sender as! URL
             playSoundsVC.recordedAudioURL = recordedAudioURL
+        }
+    }
+}
+
+extension RecordSoundsViewController: AVAudioRecorderDelegate {
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if flag {
+            //When stopRecording button is pressed and if audio is recorded successfully, perform segue to PlaySoundsViewController
+            performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+        } else {
+            print("Recording was not successful")
         }
     }
 }
